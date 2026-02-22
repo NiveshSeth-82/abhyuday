@@ -122,16 +122,6 @@
       0 0 40px hsl(270 80% 60% / 0.1);
   }
 
-  .text-neon-cyan { color: hsl(var(--neon-cyan)); }
-  .text-neon-purple { color: hsl(var(--neon-purple)); }
-  .text-neon-blue { color: hsl(var(--neon-blue)); }
-  .text-neon-pink { color: hsl(var(--neon-pink)); }
-
-  .text-golden-highlight {
-    color: #FFD166; /* golden base */
-    text-shadow: 0 0 6px rgba(255,209,102,0.95), 0 0 14px rgba(255,184,77,0.6);
-  }
-
   .glow-btn {
     @apply relative overflow-hidden px-8 py-3 rounded-lg font-display font-semibold tracking-wider uppercase text-sm transition-all duration-300;
     background: linear-gradient(135deg, hsl(185 100% 50%), hsl(220 90% 55%));

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useData } from '@/contexts/DataContext';
 import CountdownTimer from './CountdownTimer';
-import heroBg from '@/assets/bg-image.png';
+import heroBg from '@/assets/bg-image.jpg';
 
 export default function Hero() {
   const { settings } = useData();
@@ -31,7 +31,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-display font-black mb-6 text-neon-purple neon-text-purple leading-tight"
+          className="text-5xl md:text-7xl lg:text-8xl font-display font-black mb-6 gradient-text leading-tight"
         >
           {settings.heroText}
         </motion.h1>
@@ -73,30 +73,4 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
     </section>
   );
-}
-
-/* changed code: hero title color configurable via CSS variables */
-:root{
-  --hero-title-gradient: linear-gradient(90deg, #FFD166 0%, #FFB703 50%, #FF9F1C 100%);
-  --hero-title-color: #FFD166; /* fallback solid color */
-}
-
-/* default: gradient text using --hero-title-gradient */
-.hero-title {
-  background: var(--hero-title-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  filter: drop-shadow(0 2px 10px rgba(255,185,77,0.45));
-}
-
-/* optional: apply solid color instead by adding the `solid` class */
-.hero-title.solid {
-  background: none;
-  -webkit-background-clip: unset;
-  background-clip: unset;
-  -webkit-text-fill-color: initial;
-  color: var(--hero-title-color);
-  filter: none;
 }

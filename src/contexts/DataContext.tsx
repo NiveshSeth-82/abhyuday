@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import generatedDepartments from '@/data/departments.json';
+import generatedEvents from '@/data/events.json';
 
 export interface Department {
   id: string;
@@ -115,28 +117,9 @@ const defaultSettings: SiteSettings = {
   mapEmbed: "",
 };
 
-const defaultDepartments: Department[] = [
-  { id: "1", name: "Computer Science", image: "💻", description: "Coding challenges, hackathons, and AI competitions" },
-  { id: "2", name: "Mechanical", image: "⚙️", description: "Robotics, CAD design, and engineering marvels" },
-  { id: "3", name: "Electrical", image: "⚡", description: "Circuit design, IoT projects, and power systems" },
-  { id: "4", name: "Civil", image: "🏗️", description: "Bridge building, structural analysis, and design" },
-  { id: "5", name: "Management", image: "📊", description: "Business plans, case studies, and strategy" },
-  { id: "6", name: "Cultural", image: "🎭", description: "Dance, music, drama, and artistic expression" },
-  { id: "7", name: "Robotics", image: "🤖", description: "Bot wars, line followers, and autonomous bots" },
-  { id: "8", name: "Gaming", image: "🎮", description: "Esports tournaments and gaming challenges" },
-  { id: "9", name: "Open Events", image: "🌟", description: "Events open to all — no department restrictions" },
-];
+const defaultDepartments: Department[] = generatedDepartments as Department[];
 
-const defaultEvents: EventItem[] = [
-  { id: "e1", name: "Code Clash", departmentId: "1", description: "Ultimate competitive programming contest. Solve algorithmic puzzles under pressure.", rules: "Individual participation. No external help. 3 hours duration.", eligibility: "All college students", teamSize: "1", venue: "CS Lab 1", date: "2026-03-15", time: "10:00 AM", prize: "₹25,000", googleFormLink: "#", bannerImage: "", coordinators: [{ name: "Rahul Kumar", phone: "+91 99999 11111", email: "rahul@abhyuday.com" }], status: "active" },
-  { id: "e2", name: "Hackathon 36", departmentId: "1", description: "36-hour hackathon. Build solutions to real-world problems.", rules: "Team of 2-4. Bring your own laptop.", eligibility: "All college students", teamSize: "2-4", venue: "Innovation Hub", date: "2026-03-15", time: "6:00 PM", prize: "₹50,000", googleFormLink: "#", bannerImage: "", coordinators: [{ name: "Priya Singh", phone: "+91 99999 22222", email: "priya@abhyuday.com" }], status: "active" },
-  { id: "e3", name: "RoboWars", departmentId: "7", description: "Battle your robots in the arena! Last bot standing wins.", rules: "Max weight 15kg. No projectile weapons.", eligibility: "Engineering students", teamSize: "2-5", venue: "Main Ground", date: "2026-03-16", time: "2:00 PM", prize: "₹40,000", googleFormLink: "#", bannerImage: "", coordinators: [{ name: "Amit Verma", phone: "+91 99999 33333", email: "amit@abhyuday.com" }], status: "active" },
-  { id: "e4", name: "Dance Off", departmentId: "6", description: "Solo and group dance competition across genres.", rules: "Time limit 5 mins solo, 8 mins group.", eligibility: "All students", teamSize: "1-8", venue: "Main Auditorium", date: "2026-03-16", time: "6:00 PM", prize: "₹30,000", googleFormLink: "#", bannerImage: "", coordinators: [{ name: "Neha Sharma", phone: "+91 99999 44444", email: "neha@abhyuday.com" }], status: "active" },
-  { id: "e5", name: "Valorant Tournament", departmentId: "8", description: "5v5 Valorant esports tournament.", rules: "Standard competitive rules. Bo3 format.", eligibility: "All students", teamSize: "5", venue: "Gaming Arena", date: "2026-03-15", time: "11:00 AM", prize: "₹20,000", googleFormLink: "#", bannerImage: "", coordinators: [{ name: "Karan Patel", phone: "+91 99999 55555", email: "karan@abhyuday.com" }], status: "active" },
-  { id: "e6", name: "Bridge It", departmentId: "4", description: "Design and build the strongest bridge from given materials.", rules: "Materials provided. Max load test.", eligibility: "Civil & Mechanical", teamSize: "2-3", venue: "Civil Lab", date: "2026-03-16", time: "10:00 AM", prize: "₹15,000", googleFormLink: "#", bannerImage: "", coordinators: [{ name: "Sanjay Gupta", phone: "+91 99999 66666", email: "sanjay@abhyuday.com" }], status: "active" },
-  { id: "e7", name: "Business Plan", departmentId: "5", description: "Present your business idea to a panel of investors.", rules: "10 min pitch + 5 min Q&A.", eligibility: "All students", teamSize: "2-4", venue: "Seminar Hall", date: "2026-03-15", time: "1:00 PM", prize: "₹35,000", googleFormLink: "#", bannerImage: "", coordinators: [{ name: "Sneha Reddy", phone: "+91 99999 77777", email: "sneha@abhyuday.com" }], status: "active" },
-  { id: "e8", name: "Circuit Wizard", departmentId: "3", description: "Design and debug circuits in a timed challenge.", rules: "Components provided. Individual event.", eligibility: "EE & ECE students", teamSize: "1", venue: "EE Lab", date: "2026-03-16", time: "11:00 AM", prize: "₹15,000", googleFormLink: "#", bannerImage: "", coordinators: [{ name: "Deepak Joshi", phone: "+91 99999 88888", email: "deepak@abhyuday.com" }], status: "active" },
-];
+const defaultEvents: EventItem[] = generatedEvents as EventItem[];
 
 const defaultCoordinators: Coordinator[] = [
   { id: "c1", name: "Dr. Rajesh Sharma", photo: "", role: "Faculty Advisor", phone: "+91 98765 00001", email: "rajesh@nit.edu", department: "Management", social: {} },
@@ -177,7 +160,11 @@ const defaultFeatures: Feature[] = [
 
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
+// Keys that should always use code defaults (fed from JSON), not localStorage cache
+const ALWAYS_USE_DEFAULTS = ['abhyuday_departments', 'abhyuday_events', 'abhyuday_gallery'];
+
 function loadFromStorage<T>(key: string, fallback: T): T {
+  if (ALWAYS_USE_DEFAULTS.includes(key)) return fallback;
   try {
     const stored = localStorage.getItem(key);
     return stored ? JSON.parse(stored) : fallback;
@@ -191,7 +178,16 @@ export function DataProvider({ children }: { children: ReactNode }) {
   const [coordinators, setCoordinators] = useState<Coordinator[]>(() => loadFromStorage('abhyuday_coordinators', defaultCoordinators));
   const [timeline, setTimeline] = useState<TimelineItem[]>(() => loadFromStorage('abhyuday_timeline', defaultTimeline));
   const [sponsors, setSponsors] = useState<Sponsor[]>(() => loadFromStorage('abhyuday_sponsors', defaultSponsors));
-  const [gallery, setGallery] = useState<GalleryItem[]>(() => loadFromStorage('abhyuday_gallery', []));
+  const [gallery, setGallery] = useState<GalleryItem[]>(() => loadFromStorage('abhyuday_gallery', [
+    { id: "g1", url: "https://abhyuday25-ashoka-webfest-hub.vercel.app/lovable-uploads/3b3daad0-67ce-4b63-b47a-9cf7b4b6aba7.png", type: "image" as const, caption: "Abhyuday'26 Highlights" },
+    { id: "g2", url: "https://abhyuday25-ashoka-webfest-hub.vercel.app/lovable-uploads/6dbc8a9d-47ca-40ee-a1f6-0c66635c1e2c.png", type: "image" as const, caption: "Abhyuday'26 Moments" },
+    { id: "g3", url: "https://abhyuday25-ashoka-webfest-hub.vercel.app/lovable-uploads/09ee8e0b-774d-4ac6-8b38-04c0edb37219.png", type: "image" as const, caption: "Abhyuday'26 Activities" },
+    { id: "g4", url: "https://abhyuday25-ashoka-webfest-hub.vercel.app/lovable-uploads/7735f666-c401-440c-b49e-6990132240d3.png", type: "image" as const, caption: "Abhyuday'26 Events" },
+    { id: "g5", url: "https://abhyuday25-ashoka-webfest-hub.vercel.app/lovable-uploads/676ab6da-9af7-45bd-b9b9-c7dfd6b97239.png", type: "image" as const, caption: "Abhyuday'26 Stage" },
+    { id: "g6", url: "https://abhyuday25-ashoka-webfest-hub.vercel.app/lovable-uploads/954a3897-9dde-45a3-ad7d-cafdd7336f08.png", type: "image" as const, caption: "Abhyuday'26 Performance" },
+    { id: "g7", url: "https://abhyuday25-ashoka-webfest-hub.vercel.app/lovable-uploads/c5f5a74a-d656-4d7b-8cbc-1ec166e7d33a.png", type: "image" as const, caption: "Abhyuday'26 Crowd" },
+    { id: "g9", url: "https://abhyuday25-ashoka-webfest-hub.vercel.app/lovable-uploads/7e7bb29d-5fa6-4a99-ab86-eb9204a0e170.png", type: "image" as const, caption: "Abhyuday'26 Special" },
+  ]));
   const [features, setFeatures] = useState<Feature[]>(() => loadFromStorage('abhyuday_features', defaultFeatures));
 
   useEffect(() => { localStorage.setItem('abhyuday_settings', JSON.stringify(settings)); }, [settings]);

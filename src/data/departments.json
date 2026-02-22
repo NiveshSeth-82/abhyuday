@@ -1,0 +1,74 @@
+[
+  {
+    "id": "1",
+    "name": "CS Cipher",
+    "image": "💻",
+    "description": "Coding challenges, hackathons, robotics & gaming events"
+  },
+  {
+    "id": "2",
+    "name": "Literary Sahitya Spectrum",
+    "image": "📚",
+    "description": "Poetry, debates, declamation & panel discussions"
+  },
+  {
+    "id": "3",
+    "name": "Cultural Rangmanch",
+    "image": "🎭",
+    "description": "Dance, music, comedy & fashion shows"
+  },
+  {
+    "id": "4",
+    "name": "Fine Art Kalakriti",
+    "image": "🎨",
+    "description": "Sketching, quilling, henna, comics & time-lapse videos"
+  },
+  {
+    "id": "5",
+    "name": "ASB Tarangan",
+    "image": "💼",
+    "description": "Shark tank, reels, cooking & ad-making competitions"
+  },
+  {
+    "id": "6",
+    "name": "Pharma – The Saviours",
+    "image": "💊",
+    "description": "Health camps, herbal shots, quizzes & expo"
+  },
+  {
+    "id": "7",
+    "name": "Management Ensemble",
+    "image": "📊",
+    "description": "Business pitches, GD, poster gallery & edu-talks"
+  },
+  {
+    "id": "8",
+    "name": "ME Yantrika",
+    "image": "⚙️",
+    "description": "Robotics, junk yard, CAD design & model exhibits"
+  },
+  {
+    "id": "9",
+    "name": "ECE Digital Dusk",
+    "image": "📡",
+    "description": "Robo race, circuit battles & project exhibitions"
+  },
+  {
+    "id": "10",
+    "name": "EE Vidyutam",
+    "image": "⚡",
+    "description": "Maze challenges, memory grids & circuit art"
+  },
+  {
+    "id": "11",
+    "name": "Civil Symposium",
+    "image": "🏗️",
+    "description": "Paper towers, AutoCAD, quizzes & load bearing"
+  },
+  {
+    "id": "12",
+    "name": "BT Spark",
+    "image": "🧬",
+    "description": "Lab experiments, games & fun science challenges"
+  }
+]

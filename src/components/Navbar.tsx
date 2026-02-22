@@ -75,12 +75,12 @@ export default function Navbar() {
             >
               <Search size={18} />
             </Link>
-            <Link
+            {/* <Link
               to="/admin"
               className="ml-3 glow-btn text-xs !px-5 !py-2"
             >
               Admin
-            </Link>
+            </Link> */}
           </div>
 
           <button
@@ -123,9 +123,9 @@ export default function Navbar() {
             <Link to="/search" onClick={() => setMobileOpen(false)} className="text-xl font-display tracking-wider text-foreground hover:text-primary transition-colors">
               Search
             </Link>
-            <Link to="/admin" onClick={() => setMobileOpen(false)} className="glow-btn mt-4">
+            {/* <Link to="/admin" onClick={() => setMobileOpen(false)} className="glow-btn mt-4">
               Admin Panel
-            </Link>
+            </Link> */}
           </motion.div>
         )}
       </AnimatePresence>

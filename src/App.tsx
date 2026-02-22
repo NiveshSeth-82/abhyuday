@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import DepartmentEvents from "./pages/DepartmentEvents";
 import EventDetails from "./pages/EventDetails";
 import AdminLogin from "./pages/AdminLogin";
+import SearchPage from "./pages/SearchPage";
 import AdminLayout from "./pages/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminSettings from "./pages/admin/AdminSettings";
@@ -34,6 +35,7 @@ const App = () => (
               <Route path="/" element={<Index />} />
               <Route path="/department/:id" element={<DepartmentEvents />} />
               <Route path="/event/:id" element={<EventDetails />} />
+              <Route path="/search" element={<SearchPage />} />
               <Route path="/admin" element={<AdminLogin />} />
               <Route path="/admin" element={<AdminLayout />}>
                 <Route path="dashboard" element={<AdminDashboard />} />

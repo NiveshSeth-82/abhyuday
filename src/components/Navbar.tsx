@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Search } from 'lucide-react';
 import { useData } from '@/contexts/DataContext';
 
 const navLinks = [
@@ -64,8 +64,15 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
+              to="/search"
+              className="px-3 py-2 text-muted-foreground hover:text-primary transition-colors"
+              title="Search Events"
+            >
+              <Search size={18} />
+            </Link>
+            <Link
               to="/admin"
-              className="ml-4 glow-btn text-xs !px-5 !py-2"
+              className="ml-3 glow-btn text-xs !px-5 !py-2"
             >
               Admin
             </Link>
@@ -108,6 +115,9 @@ export default function Navbar() {
                 </Link>
               </motion.div>
             ))}
+            <Link to="/search" onClick={() => setMobileOpen(false)} className="text-xl font-display tracking-wider text-foreground hover:text-primary transition-colors">
+              Search
+            </Link>
             <Link to="/admin" onClick={() => setMobileOpen(false)} className="glow-btn mt-4">
               Admin Panel
             </Link>

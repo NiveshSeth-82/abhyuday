@@ -12,7 +12,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isAdmin, setIsAdmin] = useState(() => localStorage.getItem('abhyuday_admin') === 'true');
 
   const login = (email: string, password: string) => {
-    if (email === 'admin@abhyuday.com' && password === 'admin123') {
+    const trimmedEmail = email.trim().toLowerCase();
+    const trimmedPassword = password.trim();
+    if (trimmedEmail === 'admin@abhyuday.com' && trimmedPassword === 'admin123') {
       setIsAdmin(true);
       localStorage.setItem('abhyuday_admin', 'true');
       return true;

@@ -105,7 +105,7 @@ const defaultSettings: SiteSettings = {
   festName: "ABHYUDAY'26",
   tagline: "Annual Techno-Cultural Fest",
   logo: "",
-  heroText: "ABHYUDAY'26",
+  heroText: "Abhyuday'26",
   heroSubtext: "Where Innovation Meets Culture — The Biggest Techno-Cultural Fest",
   festDate: "2026-03-15T09:00:00",
   contactAddress: "NIT Campus, Technology Road, Innovation City - 123456",

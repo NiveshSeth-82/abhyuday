@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Search } from 'lucide-react';
 import { useData } from '@/contexts/DataContext';
+import heroTitle from '@/assets/abhyuday-title.png';
 
 const navLinks = [
   { label: 'Home', to: '/' },
@@ -43,13 +44,17 @@ export default function Navbar() {
       <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? 'bg-background/80 backdrop-blur-xl border-b border-border' : 'bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-background/80 backdrop-blur-xl border-b border-border' : 'bg-transparent'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between h-16 md:h-20">
-          <Link to="/" className="font-display font-bold text-lg md:text-xl gradient-text tracking-wider">
-            {settings.festName}
+          <Link to="/" className="flex items-center">
+            <img
+              src={heroTitle}
+              alt={settings.festName}
+              className="h-8 md:h-10 w-auto object-contain"
+              style={{ filter: 'brightness(0) invert(1) drop-shadow(0 0 4px rgba(0,255,255,0.3))' }}
+            />
           </Link>
 
           <div className="hidden lg:flex items-center gap-1">

@@ -109,7 +109,7 @@ const defaultSettings: SiteSettings = {
   logo: "",
   heroText: "Abhyuday'26",
   heroSubtext: "Where Innovation Meets Culture — The Biggest Techno-Cultural Fest",
-  festDate: "2026-02-25T09:00:00+05:30",
+  festDate: "2026-02-23T09:00:00+05:30",
   contactAddress: "NIT Campus, Technology Road, Innovation City - 123456",
   contactEmail: "contact@abhyuday.com",
   contactPhone: "+91 98765 43210",
@@ -161,7 +161,7 @@ const defaultFeatures: Feature[] = [
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
 // Keys that should always use code defaults (fed from JSON), not localStorage cache
-const ALWAYS_USE_DEFAULTS = ['abhyuday_departments', 'abhyuday_events', 'abhyuday_gallery'];
+const ALWAYS_USE_DEFAULTS = ['abhyuday_departments', 'abhyuday_events', 'abhyuday_gallery', 'abhyuday_settings'];
 
 function loadFromStorage<T>(key: string, fallback: T): T {
   if (ALWAYS_USE_DEFAULTS.includes(key)) return fallback;

@@ -74,3 +74,29 @@ export default function Hero() {
     </section>
   );
 }
+
+/* changed code: hero title color configurable via CSS variables */
+:root{
+  --hero-title-gradient: linear-gradient(90deg, #FFD166 0%, #FFB703 50%, #FF9F1C 100%);
+  --hero-title-color: #FFD166; /* fallback solid color */
+}
+
+/* default: gradient text using --hero-title-gradient */
+.hero-title {
+  background: var(--hero-title-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: drop-shadow(0 2px 10px rgba(255,185,77,0.45));
+}
+
+/* optional: apply solid color instead by adding the `solid` class */
+.hero-title.solid {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: initial;
+  color: var(--hero-title-color);
+  filter: none;
+}

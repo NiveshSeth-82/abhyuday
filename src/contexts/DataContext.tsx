@@ -110,9 +110,9 @@ const defaultSettings: SiteSettings = {
   heroText: "Abhyuday'26",
   heroSubtext: "Where Innovation Meets Culture — The Biggest Techno-Cultural Fest",
   festDate: "2026-02-23T09:00:00+05:30",
-  contactAddress: "NIT Campus, Technology Road, Innovation City - 123456",
-  contactEmail: "contact@abhyuday.com",
-  contactPhone: "+91 98765 43210",
+  contactAddress: "Ashoka Engineering Chauraha, Paharia Rd, Sarnath, Varanasi, Uttar Pradesh 221007",
+  contactEmail: "abhyuday@ashokainstitute.com",
+  contactPhone: "+91 9277149879",
   socialLinks: { instagram: "#", facebook: "#", twitter: "#", youtube: "#" },
   mapEmbed: "",
 };

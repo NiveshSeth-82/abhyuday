@@ -113,7 +113,7 @@ const defaultSettings: SiteSettings = {
   contactAddress: "Ashoka Engineering Chauraha, Paharia Rd, Sarnath, Varanasi, Uttar Pradesh 221007",
   contactEmail: "abhyuday@ashokainstitute.com",
   contactPhone: "+91 9277149879",
-  socialLinks: { instagram: "#", facebook: "#", twitter: "#", youtube: "#" },
+  socialLinks: { instagram: "https://www.instagram.com/abhyuday2k26", facebook: "#", twitter: "#", youtube: "#" },
   mapEmbed: "",
 };
 
@@ -185,7 +185,7 @@ const defaultFeatures: Feature[] = [
 const DataContext = createContext<DataContextType | undefined>(undefined);
 
 // Bump this version whenever code defaults change to flush stale localStorage
-const DATA_VERSION = "v5";
+const DATA_VERSION = "v6";
 
 // One-time migration: clear stale data when code version changes
 const ALL_KEYS = [
